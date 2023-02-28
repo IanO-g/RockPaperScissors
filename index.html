@@ -15,13 +15,12 @@
                 'Rock',
                 'Paper',
                 'Scissors'
-            ];
-
-            let computerChoice = choiceArray[Math.floor(Math.random()*3)];
+            ],
+            computerChoice = choiceArray[Math.floor(Math.random()*3)];
             return computerChoice;
         } 
 
-        const computerSelection = getComputerChoice(); 
+        computerSelection = getComputerChoice(); 
         console.log(computerSelection);
         
         function getPlayerChoice () {
@@ -30,74 +29,65 @@
             newInput = userInput.toLowerCase(),
             choiceOne = 'rock',
             choiceTwo = 'paper',
-            choiceThree = 'scissors';
+            choiceThree = 'scissors',
+            upperInput = newInput.charAt(0).toUpperCase() + newInput.slice(1);
             
             if (newInput === choiceOne) {
-                let upperInput = newInput.charAt(0).toUpperCase() + newInput.slice(1);
-                return upperInput;
+                upperInput;
              } else if (newInput === choiceTwo ){ 
-                let upperInput = newInput.charAt(0).toUpperCase() + newInput.slice(1);
-                return upperInput;
+                upperInput;
              } else if (newInput === choiceThree) {
-                let upperInput = newInput.charAt(0).toUpperCase() + newInput.slice(1);
-                return upperInput;
+                upperInput;
              } else {
                 alert('Please select a valid input');
                 getPlayerChoice();
-             }
-
-            let upperInput = newInput.charAt(0).toUpperCase() + newInput.slice(1);
+             } 
              return upperInput; 
         }
 
-        const playerSelection = getPlayerChoice();
+        playerSelection = getPlayerChoice();
         console.log(playerSelection); 
         
         function playRound() {
-           let win,
-           loss,
-           tie;
+           let win = "You won this round!",
+           loss = "You lost this round",
+           tie = "You tied this round",
+           playerArray = playerSelection.split(),
+           computerArray = computerSelection.split(),
+           result;
 
-
-            if (playerSelection === "Rock" && computerSelection === "Paper"){
-                //console.log('You Lose!');
-                return loss;
-            } else if (playerSelection === "Rock" && computerSelection === "Scissors"){
-                console.log('You win!');
-                return win;
-            } else if (playerSelection === "Rock" && computerSelection === "Rock"){
-                //console.log('It\'s a tie'); 
-                return tie;       
-            } else if (playerSelection === "Paper" && computerSelection === "Scissors"){
-                //console.log('You lose!');
-                return loss; 
-            } else if (playerSelection === "Paper" && computerSelection === "Paper"){
-                //console.log('It\'s a tie');
-                return tie;
-            } else if(playerSelection === "Paper" && computerSelection === "Rock"){
-                //console.log('You win!');
-                return win;
-            } else if (playerSelection === "Scissors" && computerSelection === "Scissors"){
-                //console.log('It\'s a tie');
-                return tie;
-            } else if (playerSelection === "Scissors" && computerSelection === "Rock"){
-                //console.log('You Lose!');
-                return loss;
-            } else if (playerSelection === "Scissors" && computerSelection === "Paper"){
-                //console.log('You Win!');
-                return win; 
-            }
-            return;
+            if (playerSelection === "Rock" && computerSelection === "Paper" || 
+                playerSelection === "Paper" && computerSelection === "Scissors" || 
+                playerSelection === "Scissors" && computerSelection === "Rock" ){
+                
+                    result = loss;
+            
+                } else if (playerSelection === "Rock" && computerSelection === "Scissors" || 
+                playerSelection === "Paper" && computerSelection === "Rock" || 
+                playerSelection === "Scissors" && computerSelection === "Paper"){
+                
+                result = win;
+            
+                } else if (playerArray.length == computerArray.length){
+                result = tie;       
+                }    
+                return result;
         }
 
-        //const  Results = playRound();
-        //console.log(Results);
+        Outcome = playRound();
+        console.log(Outcome);
 
         function game() {
+            //let roundsChoice = getPlayerChoice(i);
+                //roundsPlayed = playRound(i);
+            
             for (let i=0; i<5;i++) {
-               playRound(i=0); 
-            }
+                 //console.log(`You chose ${getPlayerChoice(i=0)} and ${playRound(i=0)}`);
+            } return;
         }
+
+        RoundResults = game();
+        console.log(RoundResults);
 
     </script>
     
