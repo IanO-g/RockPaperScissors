@@ -25,7 +25,7 @@
                 
         function getPlayerChoice () {
     
-            let userInput = prompt('Please choose from Rock, Paper or Scissors');
+            let userInput = prompt('Please choose from Rock, Paper or Scissors'),
                 newInput = userInput.toLowerCase(),
                 choiceOne = 'rock',
                 choiceTwo = 'paper',
@@ -37,7 +37,7 @@
                     } else if (newInput === choiceTwo ){ 
                     upperInput;
                     } else if (newInput === choiceThree){
-                        upperInput;
+                    upperInput;
                     } else {
                     alert('Please select a valid input');
                     getPlayerChoice(); 
@@ -106,6 +106,11 @@
          
        
         game(); 
+
+        // Notes for future me: 
+        // When writing this code I struggled with having both inputs be used as variables. This misunderstanding caused
+        // the game() to misread the playRound() and use the same input for each round, declaring them as const. within
+        // the playRound() allowed for new inputs each time the playRound () was called. 
 
     </script>
     
