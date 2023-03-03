@@ -52,8 +52,8 @@
             const computerSelection = getComputerChoice();
             
             let win = "You won this round!",
-                    loss = "You lost this round",
-                    tie = "You tied this round",
+                    loss = "Uh oh, you lost this round!",
+                    tie = "You tied this round!",
                     playerArray = playerSelection.split(),
                     computerArray = computerSelection.split(),
                     result;
@@ -83,11 +83,29 @@
             //console.log(playerSelection,computerSelection)
 
             function game() {
+                const resultsArray = [];
+             
+                   
                 for (i=0;i<5;i++){
                     const results = playRound();
+                  
+                    resultsArray.push(results);
                     console.log(results); 
-                } 
                 }
+                
+                const winsArray = resultsArray.filter((word)=> word.length <= 19);
+                const lossArray = resultsArray.filter((word)=> word.length > 20);
+                
+                if (winsArray.length > lossArray.length) {
+                    console.log('Congratultions You Won The Game!')
+                } else if (winsArray.length < lossArray.length ){
+                    console.log('Looks like the Computer takes this Day')
+                } else {
+                    console.log('A valiant effort with no victors but more importantly with no losers')
+                }
+
+            }
+         
        
         game(); 
 
