@@ -1,18 +1,3 @@
-function getPlayerChoice (e) {
-    let value = this.id; 
-    const container = document.querySelector('.container');
-    div = document.createElement('div');
-    div.classList.add('player');
-    div.textContent = `You chose ${value}`;
-    container.appendChild(div);
-}  
-        
-const btns = document.querySelectorAll('button'); 
-
-btns.forEach(button => 
-
-    button.addEventListener('click',getPlayerChoice))
-
 function getComputerChoice() {
         
     let choiceArray = [
@@ -21,17 +6,16 @@ function getComputerChoice() {
                     'Scissors'
                  ],
         computerChoice = choiceArray[Math.floor(Math.random()*3)];
-        console.log(computerChoice);
         return computerChoice;
     }
 
 function playRound() {
     
-    const playerSelection = getPlayerChoice();
+    const playerSelection = this.value;
     const computerSelection = getComputerChoice();
     
     let win = "You won this round!",
-            loss = "Uh oh, you lost this round!",
+            loss = "Oh no, you lost this round!",
             tie = "You tied this round!",
             playerArray = playerSelection.split(),
             computerArray = computerSelection.split(),
@@ -52,9 +36,23 @@ function playRound() {
             } else if (playerArray.length == computerArray.length){
             result = tie;       
             }
-            return result;
-       
+    const container = document.querySelector('.container')
+    const resultDiv = document.createElement('div');
+    resultDiv.classList.add('results');
+    resultDiv.innerText = `You chose ${playerSelection} and the computer chose ${computerSelection}\n 
+    ${result}`;
+    container.appendChild(resultDiv);
+    return result; 
     }
+        
+const btns = document.querySelectorAll('button'); 
+
+btns.forEach(button => 
+
+    button.addEventListener('click',playRound))
+
+
+
 
 function game() {
         
