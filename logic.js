@@ -1,3 +1,18 @@
+function getPlayerChoice (e) {
+    let value = this.id; 
+    const container = document.querySelector('.container');
+    div = document.createElement('div');
+    div.classList.add('player');
+    div.textContent = `You chose ${value}`;
+    container.appendChild(div);
+}  
+        
+const btns = document.querySelectorAll('button'); 
+
+btns.forEach(button => 
+
+    button.addEventListener('click',getPlayerChoice))
+
 function getComputerChoice() {
         
     let choiceArray = [
@@ -9,31 +24,6 @@ function getComputerChoice() {
         console.log(computerChoice);
         return computerChoice;
     }
-               
-        
-function getPlayerChoice () {
-
-    let userInput = prompt('Please choose from Rock, Paper or Scissors'),
-        newInput = userInput.toLowerCase(),
-        choiceOne = 'rock',
-        choiceTwo = 'paper',
-        choiceThree = 'scissors',
-        upperInput = newInput.charAt(0).toUpperCase() + newInput.slice(1);
-            
-        if (newInput === choiceOne){
-            upperInput;
-            } else if (newInput === choiceTwo ){ 
-            upperInput;
-            } else if (newInput === choiceThree){
-            upperInput;
-            } else {
-            alert('Please select a valid input');
-            getPlayerChoice(); 
-            } 
-            console.log(upperInput);
-            return upperInput; 
-    }  
-        
 
 function playRound() {
     
@@ -93,5 +83,5 @@ function game() {
     }
  
 
-game(); 
+//game(); 
 

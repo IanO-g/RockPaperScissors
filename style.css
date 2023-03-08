@@ -1,0 +1,9 @@
+body {
+    font-family: Hero, 'Franklin Gothic Medium', 'Arial Narrow', Arial, fantasy;
+}
+
+.container {
+    display: flex;
+    justify-content: space-evenly;
+    margin-top: 200px;
+}
