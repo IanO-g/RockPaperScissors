@@ -53,17 +53,17 @@ function playRound(e) {
             }    
             
      
-    const container = document.querySelector('.container')
+    
     const resultDiv = document.createElement('div');
     resultDiv.classList.add('results');
     resultDiv.innerText = `You chose ${playerSelection}, and we chose ${computerSelection}\n 
     ${result}`;
     container.appendChild(resultDiv);
-    console.log(result);                
+    console.log(result);    
 } 
     
 
-
+const container = document.querySelector('.container')
 const btns = document.querySelectorAll('button'); 
 
 btns.forEach(button => 
@@ -89,6 +89,19 @@ function limitRound(){
 btns.forEach(button => 
 
         button.addEventListener('click',limitRound))
+
+function hideResult(){
+
+    let allResults = document.querySelectorAll('.results');
+    let first = allResults[0];
+    if(allResults.length > 1){
+    container.removeChild(first);}
+}
+
+btns.forEach(button => 
+
+    button.addEventListener('click',hideResult))
+
 
 
 function game() {
