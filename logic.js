@@ -17,7 +17,6 @@ function playRound(e) {
     
     let playerSelection = e.target.value;
     console.log(playerSelection);
-    //if(playerSelection === undefined) return;
     const computerSelection = getComputerChoice();
     
     let win = "You won this round!",
@@ -63,8 +62,7 @@ function playRound(e) {
     console.log(result);                
 } 
     
-//const roundResult = playRound();
-//console.log(roundResult);
+
 
 const btns = document.querySelectorAll('button'); 
 
@@ -72,25 +70,25 @@ btns.forEach(button =>
 
     button.addEventListener('click',playRound))
 
+let counter = 0;
 
-    function countRounds() {
-        
-        let roundResult = playRound();
-        //if (roundResult === undefined) return;
-
-        const win = document.querySelector('#win');
-        const loss = document.querySelector('#loss');
-        const tie = document.querySelector('#tie');
-        
-        let winCount = 0;
-        let lossCount = 0;
-        let tieCount = 0;
+function limitRound(){
     
+    if (counter < 4){
+        counter ++;
+    }else {
+    for(i = 0; i < btns.length; i++){
+       
+        btns[i].disabled = true;
     }
+    }
+}
+    console.log(counter);
 
-//btns.forEach(button => 
 
-  //      button.addEventListener('click',countRounds))
+btns.forEach(button => 
+
+        button.addEventListener('click',limitRound))
 
 
 function game() {

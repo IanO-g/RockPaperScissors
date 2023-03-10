@@ -14,3 +14,7 @@ body {
     justify-content: space-between;
     align-content: center;
 }
+
+button:disabled {
+    display: none;
+}
