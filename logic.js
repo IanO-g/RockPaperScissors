@@ -9,9 +9,15 @@ function getComputerChoice() {
         return computerChoice;
     }
 
-function playRound() {
+    let winCount = 0;
+    let lossCount = 0;
+    let tieCount = 0;
     
-    const playerSelection = this.value;
+function playRound(e) {
+    
+    let playerSelection = e.target.value;
+    console.log(playerSelection);
+    //if(playerSelection === undefined) return;
     const computerSelection = getComputerChoice();
     
     let win = "You won this round!",
@@ -20,31 +26,46 @@ function playRound() {
             playerArray = playerSelection.split(),
             computerArray = computerSelection.split(),
             result;
+            const winRound= document.querySelector('#win');
+            const lossRound = document.querySelector('#loss');
+            const tieRound = document.querySelector('#tie');
 
         if (playerSelection === "Rock" && computerSelection === "Paper" || 
             playerSelection === "Paper" && computerSelection === "Scissors" || 
             playerSelection === "Scissors" && computerSelection === "Rock" ){
                 
-            result = loss;
+            result = loss; 
+            lossCount++;
+            lossRound.innerHTML = lossCount;
             
             } else if (playerSelection === "Rock" && computerSelection === "Scissors" || 
             playerSelection === "Paper" && computerSelection === "Rock" || 
             playerSelection === "Scissors" && computerSelection === "Paper"){
                 
             result = win;
+            winCount++;
+            winRound.innerHTML = winCount;
+            console.log(winCount);
             
             } else if (playerArray.length == computerArray.length){
-            result = tie;       
-            }
+            result = tie;   
+            tieCount++;
+            tieRound.innerHTML = tieCount;
+            }    
+            
+     
     const container = document.querySelector('.container')
     const resultDiv = document.createElement('div');
     resultDiv.classList.add('results');
-    resultDiv.innerText = `You chose ${playerSelection} and the computer chose ${computerSelection}\n 
+    resultDiv.innerText = `You chose ${playerSelection}, and we chose ${computerSelection}\n 
     ${result}`;
     container.appendChild(resultDiv);
-    return result; 
-    }
-        
+    console.log(result);                
+} 
+    
+//const roundResult = playRound();
+//console.log(roundResult);
+
 const btns = document.querySelectorAll('button'); 
 
 btns.forEach(button => 
@@ -52,6 +73,24 @@ btns.forEach(button =>
     button.addEventListener('click',playRound))
 
 
+    function countRounds() {
+        
+        let roundResult = playRound();
+        //if (roundResult === undefined) return;
+
+        const win = document.querySelector('#win');
+        const loss = document.querySelector('#loss');
+        const tie = document.querySelector('#tie');
+        
+        let winCount = 0;
+        let lossCount = 0;
+        let tieCount = 0;
+    
+    }
+
+//btns.forEach(button => 
+
+  //      button.addEventListener('click',countRounds))
 
 
 function game() {
@@ -69,17 +108,18 @@ function game() {
         
     const winsArray = resultsArray.filter((word)=> word.length <= 19);
     const lossArray = resultsArray.filter((word)=> word.length > 20);
-        
+            
         if (winsArray.length > lossArray.length) {
-            console.log('Congratultions You Won The Game!');
+            console.log('Congratulations You Won The Game!');
             } else if (winsArray.length < lossArray.length ){
             console.log('Looks like the Computer takes this Day');
             } else {
             console.log('A valiant effort with no victors but more importantly with no losers');
             }
-
+        
     }
  
+   
 
 //game(); 
 
