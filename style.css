@@ -1,18 +1,36 @@
 body {
     font-family: Hero, 'Franklin Gothic Medium', 'Arial Narrow', Arial, fantasy;
+ 
 }
 
 .container {
     display: flex;
     justify-content: space-evenly;
-    align-content: center;
-    margin-top: 200px;
+    gap: 10px;
+    margin-top: 100px;
 }
 
 .counter {
     display: flex;
-    justify-content: space-evenly;
-    align-content: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.numbers {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+   
+}
+
+button {
+    background-color: antiquewhite;
+    border-radius: 5px;
+    border-color: aliceblue;
+    padding: 10px;
+    box-shadow: 4px 3px 7px 2px grey;
+
 }
 
 button:disabled {
@@ -30,9 +48,16 @@ button:disabled {
     margin-top: 100px;
     align-items: center;
     gap: 20px; 
+    font-family: Luminari,cursive;
 
 }
 
 .finalResult {
+    text-align: center;
+}
+
+.results {
+    display: flex;
+    justify-content: center;
     text-align: center;
 }

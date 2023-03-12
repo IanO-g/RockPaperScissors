@@ -51,16 +51,20 @@ function playRound(e) {
             
     resultDiv.innerText = `${playerSelection} versus ${computerSelection}\n 
     ${result}`;
+    console.log(resultDiv)
     return winCount, lossCount, tieCount;   
 } 
   
 const winRound= document.querySelector('#win');
 const lossRound = document.querySelector('#loss');
 const tieRound = document.querySelector('#tie');
-const resultDiv = document.createElement('div');
-resultDiv.classList.add('results');
+
 const container = document.querySelector('.container')
-container.appendChild(resultDiv);
+const resultDiv = document.createElement('div');
+    resultDiv.classList.add('results');
+    container.insertAdjacentElement('beforebegin',resultDiv);
+    
+
 const allResults = document.querySelectorAll('.results')
 const btns = document.querySelectorAll('.btn'); 
 
@@ -112,7 +116,7 @@ function finalResult () {
     } else if (winCount < lossCount){
         finalDiv.innerText = 'Today we bathe in glory for beating our maker'
     } else {
-        finalDiv.innerText = 'No Victors here... no resolution, arguably the worst outcome'
+        finalDiv.innerText = 'No Victors Here... no resolution, arguably the worst outcome'
     }
 
     if (resultCounter < 4){
@@ -122,9 +126,9 @@ function finalResult () {
     } else {
         setTimeout(() => { finalDiv.style.display  = 'flex'
     }, 1.0 * 1000); 
-    }
     setTimeout(() => { playAgain.style.display ='flex'
-    }, 4.0 * 1000); 
+    }, 2.5 * 1000); 
+}
 }
 
 btns.forEach(button => 
