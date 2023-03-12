@@ -16,18 +16,16 @@ function getComputerChoice() {
 function playRound(e) {
     
     let playerSelection = e.target.value;
-    console.log(playerSelection);
     const computerSelection = getComputerChoice();
     
+    
     let win = "You won this round!",
-            loss = "Oh no, you lost this round!",
-            tie = "You tied this round!",
-            playerArray = playerSelection.split(),
-            computerArray = computerSelection.split(),
-            result;
-            const winRound= document.querySelector('#win');
-            const lossRound = document.querySelector('#loss');
-            const tieRound = document.querySelector('#tie');
+        loss = "Oh no, you lost this round!",
+        tie = "You tied this round!",
+        playerArray = playerSelection.split(),
+        computerArray = computerSelection.split(),
+        result;
+          
 
         if (playerSelection === "Rock" && computerSelection === "Paper" || 
             playerSelection === "Paper" && computerSelection === "Scissors" || 
@@ -44,25 +42,27 @@ function playRound(e) {
             result = win;
             winCount++;
             winRound.innerHTML = winCount;
-            console.log(winCount);
-            
+
             } else if (playerArray.length == computerArray.length){
             result = tie;   
             tieCount++;
             tieRound.innerHTML = tieCount;
             }    
             
-     
-    
-    const resultDiv = document.createElement('div');
-    resultDiv.classList.add('results');
-    resultDiv.innerText = `You chose ${playerSelection}, and we chose ${computerSelection}\n 
+    resultDiv.innerText = `${playerSelection} versus ${computerSelection}\n 
     ${result}`;
     container.appendChild(resultDiv);
-    console.log(result);    
+    console.log(result); 
+    console.log(winCount) ; console.log(tieCount); console.log(lossCount)
+    return winCount, lossCount, tieCount;   
 } 
-    
-
+  
+const winRound= document.querySelector('#win');
+const lossRound = document.querySelector('#loss');
+const tieRound = document.querySelector('#tie');
+const resultDiv = document.createElement('div');
+resultDiv.classList.add('results');
+const allResults = document.querySelectorAll('.results')
 const container = document.querySelector('.container')
 const btns = document.querySelectorAll('button'); 
 
@@ -79,58 +79,55 @@ function limitRound(){
     }else {
     for(i = 0; i < btns.length; i++){
        
-        btns[i].disabled = true;
+        btns[i].disabled = true; 
+        setTimeout(() => { resultDiv.style.display = 'none';
+    }, 1.0 * 1000);
+    } 
+    } 
     }
-    }
-}
-    console.log(counter);
-
-
+ 
 btns.forEach(button => 
 
         button.addEventListener('click',limitRound))
 
 function hideResult(){
 
-    let allResults = document.querySelectorAll('.results');
     let first = allResults[0];
-    if(allResults.length > 1){
-    container.removeChild(first);}
-}
+    if (allResults.length > 1){
+        container.removeChild(first);
+    }
+} 
 
 btns.forEach(button => 
 
     button.addEventListener('click',hideResult))
 
+let resultCounter = 0;
+const finalDiv = document.querySelector('.finalResult');
 
+function finalResult () {
 
-function game() {
-        
-    const resultsArray = [];
-     
-           
-        for (i=0;i<5;i++){
-            
-            const results = playRound();
-          
-            resultsArray.push(results);
-            console.log(results); 
-            }
-        
-    const winsArray = resultsArray.filter((word)=> word.length <= 19);
-    const lossArray = resultsArray.filter((word)=> word.length > 20);
-            
-        if (winsArray.length > lossArray.length) {
-            console.log('Congratulations You Won The Game!');
-            } else if (winsArray.length < lossArray.length ){
-            console.log('Looks like the Computer takes this Day');
-            } else {
-            console.log('A valiant effort with no victors but more importantly with no losers');
-            }
-        
+    if (winCount > lossCount){
+        finalDiv.innerText = 'Congratulations, you have bested me and the robot race...'
+    } else if (winCount < lossCount){
+        finalDiv.innerText = 'Today we bathe in glory for beating our maker'
+    } else {
+        finalDiv.innerText = 'No Victors here... no resolution, arguably the worst outcome'
     }
+
+    if (resultCounter < 4){
+        resultCounter ++;
+        finalDiv.style.display = 'none'; 
+    } else {
+        finalDiv.style.display = 'flex'; 
+    }
+console.log(finalDiv)
+}
+
+btns.forEach(button => 
+
+    button.addEventListener('click',finalResult))
  
    
 
-//game(); 
 
