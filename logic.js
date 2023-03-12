@@ -51,9 +51,6 @@ function playRound(e) {
             
     resultDiv.innerText = `${playerSelection} versus ${computerSelection}\n 
     ${result}`;
-    container.appendChild(resultDiv);
-    console.log(result); 
-    console.log(winCount) ; console.log(tieCount); console.log(lossCount)
     return winCount, lossCount, tieCount;   
 } 
   
@@ -62,9 +59,10 @@ const lossRound = document.querySelector('#loss');
 const tieRound = document.querySelector('#tie');
 const resultDiv = document.createElement('div');
 resultDiv.classList.add('results');
-const allResults = document.querySelectorAll('.results')
 const container = document.querySelector('.container')
-const btns = document.querySelectorAll('button'); 
+container.appendChild(resultDiv);
+const allResults = document.querySelectorAll('.results')
+const btns = document.querySelectorAll('.btn'); 
 
 btns.forEach(button => 
 
@@ -104,6 +102,8 @@ btns.forEach(button =>
 
 let resultCounter = 0;
 const finalDiv = document.querySelector('.finalResult');
+const playAgain = document.querySelector('#playAgain');
+
 
 function finalResult () {
 
@@ -118,10 +118,13 @@ function finalResult () {
     if (resultCounter < 4){
         resultCounter ++;
         finalDiv.style.display = 'none'; 
+        
     } else {
-        finalDiv.style.display = 'flex'; 
+        setTimeout(() => { finalDiv.style.display  = 'flex'
+    }, 1.0 * 1000); 
     }
-console.log(finalDiv)
+    setTimeout(() => { playAgain.style.display ='flex'
+    }, 4.0 * 1000); 
 }
 
 btns.forEach(button => 
